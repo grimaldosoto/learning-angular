@@ -6,6 +6,7 @@ import { Grafica1Component } from './grafica1/grafica1.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { PagesComponent } from './pages.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { PagesComponent } from './pages.component';
     CommonModule,
     SharedModule,
     RouterModule,
+    FormsModule,
   ],
 })
 export class PagesModule {}
