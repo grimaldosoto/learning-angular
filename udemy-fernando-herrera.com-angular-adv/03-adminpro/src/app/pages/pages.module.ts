@@ -29,7 +29,6 @@ import { PagesComponent } from './pages.component';
   imports: [
     CommonModule,
     FormsModule,
-    NgChartsModule,
     SharedModule,
     RouterModule,
     ComponentsModule,
