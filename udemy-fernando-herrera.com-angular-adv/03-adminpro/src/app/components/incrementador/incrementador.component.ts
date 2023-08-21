@@ -12,8 +12,6 @@ export class IncrementadorComponent  implements OnInit{
 
   @Output('valor') valorSalida:EventEmitter<number> = new EventEmitter();
 
-
-
   cambiarValor(valor:number){
     if(this.progreso >= 100 && valor >= 0){
       this.valorSalida.emit(100);
@@ -27,7 +25,17 @@ export class IncrementadorComponent  implements OnInit{
       this.progreso = this.progreso + valor;
 
     }
-    console.log(this.progreso);
+  }
+
+  onChange( nuevoValor:number ){
+    if(nuevoValor >= 100){
+      this.progreso = 100;
+    }else if(nuevoValor <= 0){
+      this.progreso = 0
+    }else{
+      this.progreso = nuevoValor
+    }
+    this.valorSalida.emit(this.progreso)
   }
 
   ngOnInit() {
