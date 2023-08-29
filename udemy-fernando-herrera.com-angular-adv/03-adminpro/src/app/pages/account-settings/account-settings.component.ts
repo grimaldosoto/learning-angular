@@ -1,7 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import _default from "chart.js/dist/plugins/plugin.tooltip";
-import callbacks = _default.descriptors.callbacks;
-import {SettingsService} from "../../services/settings.service";
+import { Component, OnInit } from '@angular/core';
+import { SettingsService } from '../../services/settings.service';
 
 @Component({
   selector: 'app-account-settings',
@@ -9,14 +7,20 @@ import {SettingsService} from "../../services/settings.service";
   styles: [
   ]
 })
-export class AccountSettingsComponent implements OnInit{
-  constructor(private settingService:SettingsService) {}
+export class AccountSettingsComponent implements OnInit {
+
+  constructor( private settingsService: SettingsService  ) {}
+
   ngOnInit(): void {
-    this.settingService.checkCurrentTheme();
+    this.settingsService.checkCurrentTheme();
+  }
+
+  changeTheme( theme: string ) {
+
+    this.settingsService.changeTheme( theme );
 
   }
-  changeTheme(theme:string){
-    this.settingService.changeTheme(theme);
-  }
+
+
 
 }
