@@ -10,8 +10,19 @@ import {Observable, retry} from "rxjs";
 export class RxjsComponent {
   constructor() {
 
-    const obs$ = new Observable(observer => {
-      let i= -1;
+    this.retornaObservable().pipe(
+     retry(1)
+    ).subscribe(
+      valor => console.log('subs:',valor),
+      (err) => console.warn('Error',err),
+      () => console.info('obs terminado')
+    );
+  }
+
+  retornaObservable() : Observable<number>{
+    let i= -1;
+
+    return new Observable<number>(observer => {
       const intervalo = setInterval(() => {
         i++;
         observer.next(i);
@@ -20,18 +31,11 @@ export class RxjsComponent {
           observer.complete();
         }
         if(i === 2 ){
-          i = 0;
           observer.error('I llego al valor de 2');
         }
       },1000)
     });
 
-    obs$.pipe(
-     retry(1)
-    ).subscribe(
-      valor => console.log('subs:',valor),
-      (err) => console.warn('Error',err),
-      () => console.info('obs terminado')
-    );
+
   }
 }
