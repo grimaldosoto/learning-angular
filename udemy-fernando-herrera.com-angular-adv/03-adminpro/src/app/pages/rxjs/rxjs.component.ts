@@ -1,7 +1,5 @@
 import {Component, OnDestroy} from '@angular/core';
 import {filter, interval, map, Observable, retry, Subscription, take} from "rxjs";
-import setInterval from "$GLOBAL$";
-import clearInterval from "$GLOBAL$";
 
 @Component({
   selector: 'app-rxjs',
