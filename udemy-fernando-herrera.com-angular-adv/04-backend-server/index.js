@@ -3,6 +3,7 @@ const express = require('express');
 //crear el servidor de express
 const app = express();
 
+
 //rutas
 app.get('/',(req, res)=>{
     res.json({
