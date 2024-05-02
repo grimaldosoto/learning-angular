@@ -1,6 +1,8 @@
 <div style="border: 1px solid red; padding: 4px">
   <h1>HOST</h1>
+  <p>Shared message->  {{message()}}</p>
   <router-outlet></router-outlet>
+<button (click)="updateMessage()">Update message</button>
 </div>
 
 

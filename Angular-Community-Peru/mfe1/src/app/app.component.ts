@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import {AwesomeService} from 'awesome';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,6 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'mfe1';
+  #awesomeService = inject(AwesomeService);
+  message = this.#awesomeService.sharedMessage;
 }

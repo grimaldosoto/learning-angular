@@ -4,6 +4,11 @@ module.exports = withNativeFederation({
 
   shared: {
     ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
+    awesome: {
+      singleton: true,
+      strictVersion: true,
+      requiredVersion: '0.0.1',
+    }
   },
 
   skip: [
@@ -16,5 +21,5 @@ module.exports = withNativeFederation({
 
   // Please read our FAQ about sharing libs:
   // https://shorturl.at/jmzH0
-  
+
 });

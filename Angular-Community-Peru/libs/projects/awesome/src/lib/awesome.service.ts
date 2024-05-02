@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable, signal} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AwesomeService {
-
-  constructor() { }
+  sharedMessage = signal(':D');
 }
