@@ -1,4 +1,4 @@
-import {Component, signal} from '@angular/core';
+import {Component, computed, signal} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {NgForOf} from "@angular/common";
 
@@ -22,6 +22,8 @@ export class AppComponent {
   tasks = signal<Task[]>([{
     name: 'Ver Curso Signals', isCompleted: false
   }]);
+
+  taskLength = computed(() => this.tasks().length);
 
   toggleName(){
     this.name.set('Soto');
