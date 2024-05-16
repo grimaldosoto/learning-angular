@@ -1,3 +1,14 @@
 <h1>Signals!</h1>
+
 <p>Mi nombre es: {{name()}}</p>
 <button (click)="toggleName()">Toggle name</button>
+
+<ul>
+  <li *ngFor="let task of tasks()">
+    {{task.name}} - isCompleted: {{task.isCompleted}}
+  </li>
+</ul>
+
+<button (click)="addRandomTask()">Add RandomTask</button>
+
+<button (click)="markTaskAsComplete()">Mark first task</button>
