@@ -1,4 +1,4 @@
-import {Component, computed, signal} from '@angular/core';
+import {Component, computed, effect, signal} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {NgForOf} from "@angular/common";
 
@@ -24,7 +24,11 @@ export class AppComponent {
   }]);
 
   taskLength = computed(() => this.tasks().length);
-
+constructor() {
+  effect(() => {
+    if(this.tasks().length > 3 ) alert("Hey, tienes muchas tareas");
+  });
+}
   toggleName(){
     this.name.set('Soto');
   }
