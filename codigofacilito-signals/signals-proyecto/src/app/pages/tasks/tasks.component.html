@@ -1,29 +1,33 @@
 <div class="d-grid">
   <div class="row">
     <div class="col-9">
-      <input
+   <input
         type="email"
         class="form-control"
         id="exampleFormControlInput1"
-        placeholder="name@example.com">
+        placeholder="Ingrese la tarea"
+        [formControl]="task">
     </div>
-    <button class="btn btn-primary col-3">Agregar</button>
+    <button class="btn btn-primary col-3" (click)="addTask();">Agregar</button>
   </div>
 
-  <div class="row mt-3" *ngFor="let item of [1,1,1,1,1,1,1]">
+  <pre><code>{{tasks() | json }}</code></pre>
+
+  <div class="row mt-3" *ngFor="let task of tasks()">
     <div class="form-check align-items-center col-9">
 
       <input
         class="form-check-input"
         type="checkbox"
-        value
-        id="flexCheckDefault">
-      <label
-        class="form-check-label"
-        for="flexCheckDefault">
-        Mi tarea
+        [value]="task.isCompleted"
+        (click)="toggleCompletedTask(task)">
+      <label class="form-check-label" [ngClass]="{'text-decoration-line-through': task.isCompleted}">
+        {{task.name}}
       </label>
     </div>
-    <button class="btn btn-danger col-3">Eliminar</button>
+    <button class="btn btn-danger col-3" (click)="deleteTask(task)">Eliminar</button>
   </div>
+  <button class="btn btn-primary mt-3" (click)="resetTask()">Eliminar todas las tareas</button>
+  <p>Tareas completadas {{completedTasks().length}}</p>
+  <p>Tareas NO completadas {{unCompletedTasks().length}}</p>
 </div>
