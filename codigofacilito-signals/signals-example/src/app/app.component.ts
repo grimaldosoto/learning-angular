@@ -1,6 +1,8 @@
-import {Component, computed, effect, signal} from '@angular/core';
+import {Component, computed, effect, OnInit, signal} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {NgForOf} from "@angular/common";
+import {toObservable} from "@angular/core/rxjs-interop";
+import {map, take} from "rxjs";
 
 interface Task{
   name: string;
@@ -14,7 +16,7 @@ interface Task{
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'signals-example';
 
   name = signal('Grimaldo');
@@ -24,11 +26,30 @@ export class AppComponent {
   }]);
 
   taskLength = computed(() => this.tasks().length);
+
+  opinion = signal('');
+  tasks$ = toObservable(this.tasks);
+
 constructor() {
   effect(() => {
     if(this.tasks().length > 3 ) alert("Hey, tienes muchas tareas");
   });
 }
+
+ngOnInit(): void {
+  this.tasks$
+    .pipe(
+      map(res =>{
+        const newTasks = res.map((task) => ({
+          ...task,
+          creationDate: new Date(),
+        }));
+        return newTasks;
+      })
+    )
+    .subscribe((res) => console.log(res));
+}
+
   toggleName(){
     this.name.set('Soto');
   }
