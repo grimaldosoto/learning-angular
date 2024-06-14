@@ -10,7 +10,7 @@ export const routes: Routes = [
     path: 'home',
     loadChildren: () =>
       import('./views/pages/pages.module').then(m => m.PagesModule),
-  },
+  }/*,
   {
     path: 'character-list',
     loadChildren: () =>
@@ -20,5 +20,5 @@ export const routes: Routes = [
     path: 'character-details/:id',
     loadChildren: () =>
       import('./views/pages/characters/character-details/character-details.module').then(m => m.CharacterDetailsModule),
-  }
+  }*/
 ];
