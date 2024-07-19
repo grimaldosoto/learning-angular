@@ -1,1 +1,12 @@
-<p>form-search works!</p>
+<!--input
+#inputSearch
+autofocus
+type="text"
+class="form-control-lg"
+placeholder="Search....."
+/-->
+
+<!--form class="d-flex" role="search"-->
+  <input (keyup)="onSearch(inputSearch.value)" #inputSearch autofocus class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
+  <!--button class="btn btn-outline-success" type="submit">Search</button-->
+<!--/form-->
