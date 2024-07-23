@@ -15,10 +15,10 @@ export const routes: Routes = [
     path: 'character-list',
     loadChildren: () =>
       import('./views/pages/characters/characters.module').then(m => m.CharactersModule),
-  },/*
+  },
   {
     path: 'character-details/:id',
     loadChildren: () =>
       import('./views/pages/characters/character-details/character-details.module').then(m => m.CharacterDetailsModule),
-  }*/
+  }
 ];

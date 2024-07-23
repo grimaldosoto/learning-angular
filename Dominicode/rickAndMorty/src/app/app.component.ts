@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {HomeComponent} from "./views/pages/home/home.component";
 import { HeaderComponent } from "./views/layout/header/header.component";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-root',
