@@ -10,7 +10,7 @@ export class CharacterService {
 
   constructor(private http: HttpClient) { }
 
-  searchCharacters(query = '', page = 1){
+  searchCharacters(query = '', page = 2){
     const filter = `${environment.baseUrlAPI}/?name=${query}&page=${page}`;
     return this.http.get<Character[]>(
       filter
