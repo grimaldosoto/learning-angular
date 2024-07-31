@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ActivatedRoute, NavigationEnd, ParamMap, Router} from "@angular/router";
 import {CharacterService} from "@shared/services/character.service";
 import {Character} from "@shared/interfaces/character.interface";
-import {take} from "rxjs/operators";
+import {filter, take} from "rxjs/operators";
 
 type RequestInfo = {
   next: string;
@@ -22,24 +22,48 @@ export class CharacterListComponent implements OnInit {
   };
 
   private pageNum=1;
-  private query: string = "";
+  private query: string = '';
   private hideScrollHeight = 200;
   private showScrollHeight = 500;
 
   constructor(
     private characterService: CharacterService,
-    private route: ActivatedRoute,) {}
+    private route: ActivatedRoute,
+    private router: Router,) {}
 
   ngOnInit(): void {
-    this.getDataFromService();
+  this.getCharactersByQuery();
   }
 
+  private onUrlChanged():void{
+    this.router.events.pipe(
+        filter(
+        (event) => event instanceof NavigationEnd
+      )).subscribe(() => {
+       this.characters = [];
+       this.pageNum = 1;
+       this.getCharactersByQuery();
+    });
+  }
+
+
   private getCharactersByQuery():void{
-    this.route.queryParams.pipe(take(1))
-      .subscribe((params: ParamMap) => {
-        this.query = params['q'];
-        this.getDataFromService();
-      })
+/*  this.route.queryParams.pipe(take(1))
+      .subscribe(
+        (params: ParamMap) => {
+          this.query = params['q'];
+        }
+      )*/
+
+
+   /* this.route.paramMap
+      .pipe(take(1))
+      .subscribe(
+        (params: ParamMap) => {
+        // Aquí puedes manejar los parámetros de consulta
+        this.query = params.get('q') ?? '';
+      });*/
+    this.getDataFromService();
   }
 
   private getDataFromService():void{
