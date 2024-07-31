@@ -15,8 +15,7 @@ import {take} from "rxjs/operators";
   styleUrls: ['./character-details.component.scss']
 })
 export class CharacterDetailsComponent implements OnInit {
-  // @ts-ignore
-  character$: Observable<Character>;
+  character$!: Observable<Character>;
 
   constructor(private route: ActivatedRoute, private characterService: CharacterService, private location: Location, private router: Router) { }
 

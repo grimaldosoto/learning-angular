@@ -4,12 +4,15 @@ import { RouterModule } from '@angular/router';
 
 import {CharacterDetailsComponent} from "@characters/character-details/character-details.component";
 import {CharacterListComponent} from "@characters/character-list/character-list.component";
+import {CharacterComponent} from "@characters/character.component";
 
 
 @NgModule({
   declarations: [
     CharacterDetailsComponent,
-    CharacterListComponent
+    CharacterListComponent,
+    CharacterComponent
+
   ],
   imports: [
     CommonModule,
@@ -17,7 +20,8 @@ import {CharacterListComponent} from "@characters/character-list/character-list.
   ],
   exports: [
     CharacterDetailsComponent,
-    CharacterListComponent
+    CharacterListComponent,
+    CharacterComponent
   ]
 })
 export class CharactersModule { }
